@@ -23,22 +23,29 @@ const text = document.querySelector("#banner > p")
 console.log(img);
 console.log(text);
 
+// console.log(imgSrc);
+// console.log(textSrc);
 
 
 left.addEventListener('click', function() {
-	// img.innerHTML = 
+	for (let i = 0; i < numbers; i++) {
+		text.innerHTML = slides[i].tagLine
+}
+	// img.innerHTML = "./assets/images/slideshow/slide3.jpg"
 	console.log("okleft")
 })
 
 
 right.addEventListener('click', function() {
+		for (let i = 0; i < numbers; i++) {
+		text.innerHTML = slides[i].tagLine
+		i++
+}
 	console.log("okright")
 })
 
 
-// console.log(left);
-// console.log(right);
-
+console.log(addDots);
 
 const bullet = document.querySelector(".dots");
 numbers = slides.length;
@@ -49,13 +56,6 @@ for (let i = 0; i < numbers; i++) {
 	bullet.appendChild(div)
 }
 
-
-
-for(var i = 0; i < numbers; i++){
-	console.log(slides[i])
-};
-
 console.log(slides);
-
 
 
