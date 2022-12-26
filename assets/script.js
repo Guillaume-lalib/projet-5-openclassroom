@@ -25,8 +25,6 @@ const text = document.querySelector("#banner > p")
 let Index = 1
 
 function nextSlide (){
-	img.setAttribute("src", slides[Index].image)
-	text.innerHTML = slides[Index].tagLine
 	if(Index < slides.length -1){
 		Index++
 	} else {
@@ -36,8 +34,6 @@ function nextSlide (){
 right.addEventListener('click', nextSlide)
 
 function previousSlide (){
-	img.setAttribute("src", slides[Index].image)
-	text.innerHTML = slides[Index].tagLine
 	if(Index > 0){
 		Index--
 	} else {
@@ -46,19 +42,6 @@ function previousSlide (){
 }
 left.addEventListener('click', previousSlide)
 
-// right.addEventListener('click', function() {
-// 	img.setAttribute("src", slides[Index].image)
-// 	text.innerHTML = slides[Index].tagLine
-// 	Index++;
-// 	if (Index > 3) {Index = 0}
-// })
-
-// left.addEventListener('click', function() {
-// 	img.setAttribute("src", slides[Index].image)
-// 	text.innerHTML = slides[Index].tagLine
-// 	Index--;
-// 	if (Index < 0) {Index = 3}
-// })
 
 const bullet = document.querySelector(".dots");
 
@@ -73,19 +56,40 @@ const dotTwo = document.querySelector(".dots div:nth-child(2)")
 const dotThree = document.querySelector(".dots div:nth-child(3)")
 const dotFour = document.querySelector(".dots div:nth-child(4)")
 
-const addDots = document.querySelectorAll('.dot')
 
-function dotSelect(){
-addDots[Index].classList.add('dot_selected')
-return
+dotOne.classList.add('dot_selected')
+
+function slider(){
+if (Index === 1) {
+		dotOne.classList.add('dot_selected')
+		img.setAttribute("src", slides[0].image)
+		text.innerHTML = slides[0].tagLine
+	}else{
+		dotOne.classList.remove('dot_selected')
+	}
+	if (Index === 2) {
+		img.setAttribute("src", slides[1].image)
+		text.innerHTML = slides[1].tagLine
+		dotTwo.classList.add('dot_selected')
+	}else{
+		dotTwo.classList.remove('dot_selected')
+	}
+	if (Index === 3) {
+		img.setAttribute("src", slides[2].image)
+		text.innerHTML = slides[2].tagLine
+		dotThree.classList.add('dot_selected')
+	}else{
+		dotThree.classList.remove('dot_selected')
+	}
+	if (Index === 0) {
+		img.setAttribute("src", slides[3].image)
+		text.innerHTML = slides[3].tagLine
+		dotFour.classList.add('dot_selected')
+	}else{
+		dotFour.classList.remove('dot_selected')
+	}
 }
 
-console.log(addDots[2]);
+right.addEventListener('click', slider)
+left.addEventListener('click', slider)
 
-console.log(slides);
-console.log(Index);
-console.log(dotOne);
-console.log(dotTwo);
-console.log(dotThree);
-console.log(dotFour);
-console.log(slides[1]);
