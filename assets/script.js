@@ -21,33 +21,44 @@ const left = document.getElementById("left");
 const right = document.getElementById("right");
 const img = document.querySelector("#banner > img")
 const text = document.querySelector("#banner > p")
-console.log(img);
-console.log(text);
 
-var imageIndex = 1
-var textIndex = 1
+let Index = 1
 
-right.addEventListener('click', function() {
-	img.setAttribute("src", slides[imageIndex].image)
-	imageIndex++;
-	if (imageIndex > 3) {imageIndex = 0}
+function nextSlide (){
+	img.setAttribute("src", slides[Index].image)
+	text.innerHTML = slides[Index].tagLine
+	if(Index < slides.length -1){
+		Index++
+	} else {
+		Index = 0
+	}
+}
+right.addEventListener('click', nextSlide)
 
-	text.innerHTML = slides[textIndex].tagLine
-	textIndex++;
-	if (textIndex > 3) {textIndex = 0}
+function previousSlide (){
+	img.setAttribute("src", slides[Index].image)
+	text.innerHTML = slides[Index].tagLine
+	if(Index > 0){
+		Index--
+	} else {
+		Index = slides.length -1
+	}
+}
+left.addEventListener('click', previousSlide)
 
-})
-left.addEventListener('click', function() {
-	img.setAttribute("src", slides[imageIndex].image)
-	imageIndex--;
-	if (imageIndex > -1) {imageIndex = 4}
+// right.addEventListener('click', function() {
+// 	img.setAttribute("src", slides[Index].image)
+// 	text.innerHTML = slides[Index].tagLine
+// 	Index++;
+// 	if (Index > 3) {Index = 0}
+// })
 
-	text.innerHTML = slides[textIndex].tagLine
-	textIndex--;
-	if (textIndex > -1) {textIndex = 4}
-	console.log(text);
-
-})
+// left.addEventListener('click', function() {
+// 	img.setAttribute("src", slides[Index].image)
+// 	text.innerHTML = slides[Index].tagLine
+// 	Index--;
+// 	if (Index < 0) {Index = 3}
+// })
 
 const bullet = document.querySelector(".dots");
 
@@ -57,6 +68,24 @@ for (let i = 0; i < slides.length; i++) {
 	bullet.appendChild(div)
 }
 
-console.log(addDots);
+const dotOne = document.querySelector(".dots div:nth-child(1)")
+const dotTwo = document.querySelector(".dots div:nth-child(2)")
+const dotThree = document.querySelector(".dots div:nth-child(3)")
+const dotFour = document.querySelector(".dots div:nth-child(4)")
 
+const addDots = document.querySelectorAll('.dot')
 
+function dotSelect(){
+addDots[Index].classList.add('dot_selected')
+return
+}
+
+console.log(addDots[2]);
+
+console.log(slides);
+console.log(Index);
+console.log(dotOne);
+console.log(dotTwo);
+console.log(dotThree);
+console.log(dotFour);
+console.log(slides[1]);
