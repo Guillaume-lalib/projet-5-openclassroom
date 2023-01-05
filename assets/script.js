@@ -23,6 +23,7 @@ const right = document.getElementById("right");
 const img = document.querySelector("#banner > img");
 const text = document.querySelector("#banner > p");
 const bullet = document.querySelector(".dots");
+const dot = document.querySelectorAll(".dot")
 let Index = 0;
 
 
@@ -34,6 +35,10 @@ for (let i = 0; i < slides.length; i++) {
 
 document.querySelectorAll(".dot")[0].classList.add("dot_selected");
 
+dot.forEach(element => {
+  document.querySelectorAll(".dot").classList.remove("dot_selected");
+});
+
 function slider() {
   img.setAttribute("src", slides[Index].image);
   text.innerHTML = slides[Index].tagLine;
@@ -43,7 +48,7 @@ left.addEventListener("click", () => {
   Index -= 1;
   if (Index < 0) Index = 3;
   slider();
-  document.querySelectorAll(".dot").classList.remove("dot_selected");
+  // document.querySelectorAll(".dot").classList.remove("dot_selected");
   
   console.log(Index);
 });
@@ -52,7 +57,7 @@ right.addEventListener("click", () => {
   Index += 1;
   if (Index > 3) Index = 0;
   slider();
-  document.querySelectorAll(".dot").classList.remove("dot_selected");
+  // document.querySelectorAll(".dot").classList.remove("dot_selected");
   
   console.log(Index);
 });
