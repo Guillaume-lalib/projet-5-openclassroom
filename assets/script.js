@@ -25,40 +25,34 @@ const text = document.querySelector("#banner > p");
 const bullet = document.querySelector(".dots");
 let Index = 0;
 
+
 for (let i = 0; i < slides.length; i++) {
   div = document.createElement("div");
   div.className = "dot";
   bullet.appendChild(div);
 }
 
+document.querySelectorAll(".dot")[0].classList.add("dot_selected");
 
 function slider() {
-	img.setAttribute("src", slides[Index].image);
-	text.innerHTML = slides[Index].tagLine;
+  img.setAttribute("src", slides[Index].image);
+  text.innerHTML = slides[Index].tagLine;
+  document.querySelectorAll(".dot")[Index].classList.add("dot_selected");
 }
-
 left.addEventListener("click", () => {
-	Index -= 1;
-	if (Index < 0) Index = 3;
-	slider();
-	console.log(Index);
+  Index -= 1;
+  if (Index < 0) Index = 3;
+  slider();
+  document.querySelectorAll(".dot").classList.remove("dot_selected");
+  
+  console.log(Index);
 });
 
 right.addEventListener("click", () => {
-	Index += 1;
-	if (Index > 3) Index = 0;
-	slider();
-	console.log(Index);
+  Index += 1;
+  if (Index > 3) Index = 0;
+  slider();
+  document.querySelectorAll(".dot").classList.remove("dot_selected");
+  
+  console.log(Index);
 });
-
-
-const dot = document.querySelectorAll(".dot");
-const dotSelected = Array.prototype.slice.call(dot);
-
-// const dotOne = document.querySelector(".dots div:nth-child(1)")
-// const dotTwo = document.querySelector(".dots div:nth-child(2)")
-// const dotThree = document.querySelector(".dots div:nth-child(3)")
-// const dotFour = document.querySelector(".dots div:nth-child(4)")
-dotOne.classList.add('dot_selected')
-
-console.log(dotSelected);
