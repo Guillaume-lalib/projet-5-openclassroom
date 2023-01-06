@@ -23,9 +23,7 @@ const right = document.getElementById("right");
 const img = document.querySelector("#banner > img");
 const text = document.querySelector("#banner > p");
 const bullet = document.querySelector(".dots");
-const dot = document.querySelectorAll(".dot")
 let Index = 0;
-
 
 for (let i = 0; i < slides.length; i++) {
   div = document.createElement("div");
@@ -33,31 +31,40 @@ for (let i = 0; i < slides.length; i++) {
   bullet.appendChild(div);
 }
 
-document.querySelectorAll(".dot")[0].classList.add("dot_selected");
-
-dot.forEach(element => {
-  document.querySelectorAll(".dot").classList.remove("dot_selected");
-});
+const dot = document.querySelectorAll(".dot");
 
 function slider() {
   img.setAttribute("src", slides[Index].image);
   text.innerHTML = slides[Index].tagLine;
-  document.querySelectorAll(".dot")[Index].classList.add("dot_selected");
 }
+
+function selectedDot(IndexDot) {
+    dot.forEach(el => {
+        el.classList.remove("dot_selected");
+    });
+    document.querySelectorAll(".dot")[IndexDot].classList.add("dot_selected");
+    Index = IndexDot;
+}
+selectedDot(0);
+
+
 left.addEventListener("click", () => {
-  Index -= 1;
+  Index --;
   if (Index < 0) Index = 3;
+
+  selectedDot(Index);
   slider();
-  // document.querySelectorAll(".dot").classList.remove("dot_selected");
-  
-  console.log(Index);
+
 });
 
 right.addEventListener("click", () => {
-  Index += 1;
+  Index ++;
   if (Index > 3) Index = 0;
+
+  selectedDot(Index);
   slider();
-  // document.querySelectorAll(".dot").classList.remove("dot_selected");
   
-  console.log(Index);
 });
+
+// // pierrepremel@gmail.com
+
