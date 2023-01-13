@@ -39,32 +39,26 @@ function slider() {
 }
 
 function selectedDot(IndexDot) {
-    dot.forEach(el => {
-        el.classList.remove("dot_selected");
-    });
-    document.querySelectorAll(".dot")[IndexDot].classList.add("dot_selected");
-    Index = IndexDot;
+  dot.forEach((el) => {
+    el.classList.remove("dot_selected");
+  });
+  document.querySelectorAll(".dot")[IndexDot].classList.add("dot_selected");
+  Index = IndexDot;
 }
-selectedDot(0);
-
+selectedDot(0); //index
 
 left.addEventListener("click", () => {
-  Index --;
-  if (Index < 0) Index = 3;
+  Index--;
+  if (Index < 0) Index = slides.length - 1;
 
   selectedDot(Index);
   slider();
-
 });
 
 right.addEventListener("click", () => {
-  Index ++;
-  if (Index > 3) Index = 0;
+  Index++;
+  if (Index > slides.length - 1) Index = 0;
 
   selectedDot(Index);
   slider();
-  
 });
-
-// // pierrepremel@gmail.com
-
