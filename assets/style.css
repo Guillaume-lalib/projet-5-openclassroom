@@ -124,13 +124,12 @@ header {
 	position: absolute;
 	top: 300px;
 	z-index: 2;
+	cursor: pointer;
 }
 .arrow_left {
-	cursor: pointer;
 	left: 20px;
 }
 .arrow_right {
-	cursor: pointer;
 	right: 20px;
 }
 /* Gestion des points du carrousel */
